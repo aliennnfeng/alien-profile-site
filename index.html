@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Xiya Feng | Venture Capital</title>
-  <meta name="description" content="Xiya Feng — Early-stage investing enthusiast. VC portfolio and professional profile." />
+  <title>Alien Feng | Venture Capital</title>
+  <meta name="description" content="Alien Feng — Early-stage investing enthusiast. VC scout & associate. CMU Tepper. VC portfolio and professional profile." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
@@ -250,11 +250,21 @@
     .hero-title {
       font-size: clamp(2.5rem, 6vw, 4rem);
       font-weight: 700;
-      line-height: 1.1;
+      line-height: 1.15;
       margin: 0 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
-    .hero-title .line2 { display: block; }
-    .hero-title .accent { color: var(--accent); }
+    .hero-title .hero-line { display: block; }
+    .hero-title .hero-white { color: var(--text); }
+    .hero-title .hero-gradient {
+      background: linear-gradient(90deg, #f5c26b 0%, #e8a54b 50%, #c4893a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
     .hero-desc {
       font-size: 1.1rem;
@@ -318,10 +328,15 @@
       gap: 0.5rem;
       font-size: 1.75rem;
       font-weight: 700;
-      color: var(--accent);
       margin-bottom: 0.35rem;
     }
-    .metric-card .value svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .metric-card .value-num {
+      background: linear-gradient(90deg, #f5c26b 0%, #e8a54b 50%, #c4893a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .metric-card .value svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--accent); }
     .metric-card .label { font-size: 0.9rem; color: var(--text-muted); }
 
     /* About */
@@ -507,10 +522,12 @@
     <section id="hero">
       <p class="hero-label"><span class="star">★</span> Venture Capital</p>
       <h1 class="hero-title">
-        Early-Stage <span class="line2"><span class="accent">Investing</span> Enthusiast</span>
+        <span class="hero-line hero-white">Early-Stage</span>
+        <span class="hero-line hero-gradient">Investing</span>
+        <span class="hero-line hero-white">Enthusiast</span>
       </h1>
       <p class="hero-desc">
-        Identifying and nurturing the next generation of transformative startups. Focused on technology-driven innovation and sustainable growth.
+        Identifying and nurturing the next generation of transformative startups. Focused on AI infrastructure, hard tech, and human-centered health—with a foundation in finance and data-driven due diligence.
       </p>
       <div class="hero-cta">
         <a href="#investing" class="btn btn-primary">View Investing Focus →</a>
@@ -518,16 +535,16 @@
       </div>
       <div class="metrics">
         <div class="metric-card">
-          <div class="value">25+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
-          <div class="label">Portfolio Companies</div>
+          <div class="value"><span class="value-num">100+</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
+          <div class="label">Startups Screened</div>
         </div>
         <div class="metric-card">
-          <div class="value">8 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
-          <div class="label">Investment Sectors</div>
+          <div class="value"><span class="value-num">10+</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
+          <div class="label">Investment Theses</div>
         </div>
         <div class="metric-card">
-          <div class="value">10+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
-          <div class="label">Years Experience</div>
+          <div class="value"><span class="value-num">125+</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
+          <div class="label">Countries (Ecosystem Reach)</div>
         </div>
       </div>
     </section>
@@ -540,23 +557,26 @@
       <h2 class="section-title">Passionate About <span class="accent">Innovation</span></h2>
       <div class="content">
         <p class="section-desc">
-          As a venture capital and early-stage investing enthusiast, I specialize in identifying and supporting groundbreaking startups that are reshaping industries. With a focus on technology-driven solutions, I bring strategic insights and a network of resources to help founders succeed.
+          I'm Alien Feng—a venture scout and VC associate focused on early-stage startups across AI infrastructure, hard tech, and human-centered health. I'm currently at Carnegie Mellon (Tepper), pursuing a B.S. in Business Administration with an AI in Business concentration and an additional major in Statistics and Data Science (Expected May 2028). I bring data-driven due diligence, financial modeling, and a global ecosystem lens from roles at MiraclePlus (YC China), LvlUp Ventures, Seamless Venture, and Startup Grind, plus structured finance experience from HSBC. At CMU I serve as Vice-President of External for Eta Omega Chi, where I've secured $20K+ in corporate sponsorships and built an alumni and career platform connecting 100+ professionals with 50+ active members.
+        </p>
+        <p class="section-desc" style="margin-top: -1rem;">
+          <strong>Skills:</strong> Python, R, Bloomberg, Financial Modeling, DCF, Early-Stage Due Diligence · <strong>Languages:</strong> English, Chinese, French
         </p>
         <div class="value-cards">
           <div class="value-card">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
             <h3>Strategic Vision</h3>
-            <p>Identifying transformative opportunities in emerging markets and disruptive technologies.</p>
+            <p>Identifying transformative opportunities in AI infrastructure, embodied intelligence, and frontier tech.</p>
           </div>
           <div class="value-card">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/><path d="M20 12a8 8 0 1 0-16 0 8 8 0 0 0 16 0z"/></svg></div>
             <h3>Deep Analysis</h3>
-            <p>Data-driven approach to evaluating startups and market trends with rigorous due diligence.</p>
+            <p>Bottoms-up financial models, sensitivity analyses, and IC-facing memos translating technical complexity into investment frameworks.</p>
           </div>
           <div class="value-card">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
             <h3>Founder-First</h3>
-            <p>Building lasting relationships with visionary founders and supporting their journey.</p>
+            <p>Connecting founders and investors across 600+ chapters and 125+ countries; building lasting relationships with visionary teams.</p>
           </div>
         </div>
       </div>
@@ -570,32 +590,60 @@
       <h2 class="section-title">Professional <span class="accent">Journey</span></h2>
       <div class="experience-layout">
         <div class="timeline">
-          <span class="timeline-dot">2020 – Present</span>
-          <span class="timeline-dot">2017 – 2020</span>
+          <span class="timeline-dot">Dec 2025 – Present</span>
+          <span class="timeline-dot">Dec 2025 – Present</span>
+          <span class="timeline-dot">Oct 2025 – Present</span>
+          <span class="timeline-dot">Jun – Sep 2025</span>
+          <span class="timeline-dot">Jun – Aug 2024</span>
         </div>
         <div class="exp-cards">
           <div class="exp-card">
-            <h3>Senior Investment Analyst</h3>
-            <p class="company">Innovative Ventures</p>
-            <p class="desc">Led due diligence and investment decisions for early-stage tech startups. Successfully identified and invested in 15+ companies across AI, fintech, and sustainable tech sectors.</p>
+            <h3>Startup & Venture Capital Intern</h3>
+            <p class="company">Startup Grind · Global</p>
+            <p class="desc">Supporting global startup ecosystem initiatives by connecting founders and investors across 600+ chapters in 125+ countries, gaining exposure to early-stage fundraising processes and founder–investor dynamics.</p>
+          </div>
+          <div class="exp-card">
+            <h3>Venture Scout</h3>
+            <p class="company">Seamless Venture · Grand Rapids, MI</p>
+            <p class="desc">Sourcing and evaluating early-stage startups across human-centered health, ESG, Industry 4.0, software, and hard tech, emphasizing enterprise adoption potential and commercial applicability.</p>
             <div class="achievements">
               <div class="achievements-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg> Key Achievements</div>
               <ul>
-                <li>Portfolio companies raised $200M+ in follow-on funding</li>
-                <li>Average portfolio company valuation growth of 300%</li>
-                <li>Mentored 50+ founders through strategic growth phases</li>
+                <li>Assessed founding team, problem–solution fit, and early commercial traction through market and solution diligence; screened 20+ opportunities for scalability, integration feasibility, and enterprise readiness</li>
               </ul>
             </div>
           </div>
           <div class="exp-card">
-            <h3>Investment Associate</h3>
-            <p class="company">Tech Growth Partners</p>
-            <p class="desc">Evaluated investment opportunities in Series A and B stage companies. Developed comprehensive market analysis and financial models.</p>
+            <h3>Venture Scout</h3>
+            <p class="company">LvlUp Ventures · Los Angeles, CA</p>
+            <p class="desc">Originating and screening 100+ early-stage AI infrastructure and fintech startups, owning initial evaluation from market mapping to founder diligence and early traction assessment.</p>
             <div class="achievements">
               <div class="achievements-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg> Key Achievements</div>
               <ul>
-                <li>Analyzed 200+ investment opportunities annually</li>
-                <li>Participated in 10 successful exits</li>
+                <li>Synthesized GTM motion, pricing power, technical defensibility, and KPI quality into partner-ready briefs supporting pre-IC prioritization</li>
+              </ul>
+            </div>
+          </div>
+          <div class="exp-card">
+            <h3>Venture Capital Associate</h3>
+            <p class="company">MiraclePlus (Formerly YC China) · Beijing, CN</p>
+            <p class="desc">Led deep-dive research across AI infrastructure, embodied intelligence, and optical interconnects, developing 10+ investment theses and prioritizing ~12 of 50+ opportunities toward $7M+ early-stage deployments.</p>
+            <div class="achievements">
+              <div class="achievements-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg> Key Achievements</div>
+              <ul>
+                <li>Built bottoms-up financial models and sensitivity analyses to assess commercialization pathways, scalability risks, and unit economics of frontier technologies</li>
+                <li>Authored IC-facing investment memos translating technical complexity into investment-relevant risks, milestones, and KPI frameworks, supporting follow-on decisions and portfolio value creation</li>
+              </ul>
+            </div>
+          </div>
+          <div class="exp-card">
+            <h3>Investment Banking Intern</h3>
+            <p class="company">HSBC · Hong Kong, CN</p>
+            <p class="desc">Supported Shenzhen Metro Group's $5B restructuring, building 13-week liquidity and debt-capacity models to inform A&E vs. exchange offer decisions.</p>
+            <div class="achievements">
+              <div class="achievements-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg> Key Achievements</div>
+              <ul>
+                <li>Contributed to restructuring pitchbooks analyzing capital structure optimization, valuation impacts, and stakeholder trade-offs for senior banker discussions</li>
               </ul>
             </div>
           </div>
@@ -608,30 +656,23 @@
       <h2 class="section-title">Where I <span class="accent">Invest</span></h2>
       <p class="section-desc" style="color: var(--text-muted); margin-bottom: 2rem;">Sectors and themes I am actively evaluating and supporting.</p>
       <div class="focus-grid">
-        <div class="focus-card"><h4>AI & Machine Learning</h4><p>Applied AI, infrastructure, and vertical AI solutions.</p></div>
-        <div class="focus-card"><h4>Fintech & Insurtech</h4><p>Payments, embedded finance, and next-gen insurance.</p></div>
-        <div class="focus-card"><h4>Sustainable Tech</h4><p>Climate, energy transition, and circular economy.</p></div>
-        <div class="focus-card"><h4>Healthcare & Bio</h4><p>Digital health, biotech, and diagnostics.</p></div>
+        <div class="focus-card"><h4>AI Infrastructure & Applied AI</h4><p>AI infrastructure, embodied intelligence, vertical AI, and fintech applications.</p></div>
+        <div class="focus-card"><h4>Hard Tech</h4><p>Optical interconnects, frontier technologies, and enterprise-ready hardware and software.</p></div>
+        <div class="focus-card"><h4>Human-Centered & Frontier Health</h4><p>Human-centered health, digital health, and commercialization pathways in life sciences.</p></div>
+        <div class="focus-card"><h4>ESG & Industry 4.0</h4><p>ESG, Industry 4.0, sustainable tech, and commercial applicability in enterprise adoption.</p></div>
       </div>
     </section>
 
     <section id="insights">
       <div class="section-label">Industry Insights</div>
       <h2 class="section-title">Writing & <span class="accent">Thinking</span></h2>
-      <p class="insights-intro">Selected notes and perspectives on markets, startups, and venture. Placeholder—replace with real links when you have content.</p>
+      <p class="insights-intro">Selected perspectives on markets, startups, and venture. Add links to your essays, notes, or talks here when you have content.</p>
       <div class="insights-list">
         <div class="insight-item">
-          <span class="date">2024</span>
+          <span class="date">—</span>
           <div>
-            <div class="title">Example: The case for vertical AI in 2025</div>
-            <p class="meta">Short essay or blog — update with your piece</p>
-          </div>
-        </div>
-        <div class="insight-item">
-          <span class="date">2024</span>
-          <div>
-            <div class="title">Example: Founder-market fit in early-stage</div>
-            <p class="meta">Perspective — update with your piece</p>
+            <div class="title">Coming soon</div>
+            <p class="meta">Notes on AI infrastructure, early-stage diligence, and founder–investor dynamics</p>
           </div>
         </div>
       </div>
@@ -642,8 +683,10 @@
       <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
       <p class="section-desc">Open to connecting with founders, co-investors, and talent in the early-stage ecosystem.</p>
       <div class="contact-links">
-        <a href="https://www.linkedin.com/in/xiyafeng" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="mailto:hello@xiyafeng.com">hello@xiyafeng.com</a>
+        
+        <a href="https://www.linkedin.com/in/alien-feng/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:xiyaf@andrew.cmu.edu" target="_blank" rel="noopener noreferrer">xiyaf@andrew.cmu.edu</a>
+        <a href="https://x.com/AlienF88204" target="_blank" rel="noopener noreferrer">X</a>
       </div>
     </section>
   </main>
