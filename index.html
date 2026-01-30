@@ -656,6 +656,67 @@
       background: rgba(0, 0, 0, 0.5);
       color: var(--accent);
     }
+    .contact-social-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 0.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-social-row:hover { border-color: rgba(232, 165, 75, 0.5); background: rgba(0, 0, 0, 0.5); }
+    .contact-social-row .contact-social-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.9375rem;
+      flex: 1;
+      min-width: 0;
+    }
+    .contact-copy-btn {
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+      border: none;
+      border-radius: 0.375rem;
+      background: rgba(148, 163, 184, 0.15);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+    .contact-copy-btn:hover { background: rgba(232, 165, 75, 0.2); color: var(--accent); }
+    .contact-copy-btn svg { width: 1rem; height: 1rem; }
+    .contact-toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      padding: 0.6rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      color: var(--text);
+      font-size: 0.875rem;
+      font-weight: 500;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      opacity: 0;
+      transition: opacity 0.25s, transform 0.25s;
+      z-index: 1000;
+      pointer-events: none;
+    }
+    .contact-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
     .contact-social-icon {
       width: 2.5rem;
       height: 2.5rem;
@@ -666,9 +727,9 @@
       flex-shrink: 0;
     }
     .contact-social-icon svg { width: 1.25rem; height: 1.25rem; color: #fff; }
-    .contact-social-icon.icon-email { background: linear-gradient(135deg, #475569, #334155); }
-    .contact-social-icon.icon-linkedin { background: linear-gradient(135deg, #475569, #334155); }
-    .contact-social-icon.icon-x { background: linear-gradient(135deg, var(--accent-dim), var(--accent)); }
+    .contact-social-icon.icon-email { background: linear-gradient(135deg, #334155 0%, #475569 100%); }
+    .contact-social-icon.icon-linkedin { background: linear-gradient(135deg, #b45309 0%, #e8a54b 100%); }
+    .contact-social-icon.icon-x { background: linear-gradient(135deg, #c2410c 0%, #ea580c 100%); }
     .contact-office-row {
       display: flex;
       justify-content: space-between;
@@ -1051,12 +1112,17 @@
         <div class="contact-card">
           <h5 style="margin-bottom: 1rem;">Connect on Social</h5>
           <div class="contact-social-list">
-            <a href="mailto:xiyaf@andrew.cmu.edu" target="_blank" rel="noopener noreferrer">
-              <span class="contact-social-icon icon-email">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div class="contact-social-row">
+              <span class="contact-social-label">
+                <span class="contact-social-icon icon-email">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </span>
+                Email
               </span>
-              Email
-            </a>
+              <button type="button" class="contact-copy-btn" data-email="xiyaf@andrew.cmu.edu" aria-label="Copy email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              </button>
+            </div>
             <a href="https://www.linkedin.com/in/alien-feng/" target="_blank" rel="noopener noreferrer">
               <span class="contact-social-icon icon-linkedin">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -1086,6 +1152,8 @@
       </div>
     </section>
   </main>
+
+  <div id="contact-toast" class="contact-toast" role="status" aria-live="polite">Email copied to clipboard</div>
 
   <script>
     (function () {
@@ -1170,6 +1238,48 @@
       } else {
         animateSections.forEach(function (el) {
           el.classList.add('in-view');
+        });
+      }
+
+      /* Contact: copy email + toast */
+      var copyBtn = document.querySelector('.contact-copy-btn');
+      var toast = document.getElementById('contact-toast');
+      var toastTimer = null;
+      if (copyBtn && toast) {
+        copyBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var email = copyBtn.getAttribute('data-email') || '';
+          if (!email) return;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email).then(function () {
+              toast.textContent = 'Email copied to clipboard';
+              toast.classList.add('show');
+              if (toastTimer) clearTimeout(toastTimer);
+              toastTimer = setTimeout(function () {
+                toast.classList.remove('show');
+                toastTimer = null;
+              }, 2500);
+            });
+          } else {
+            var ta = document.createElement('textarea');
+            ta.value = email;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'absolute';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              document.execCommand('copy');
+              toast.textContent = 'Email copied to clipboard';
+              toast.classList.add('show');
+              if (toastTimer) clearTimeout(toastTimer);
+              toastTimer = setTimeout(function () {
+                toast.classList.remove('show');
+                toastTimer = null;
+              }, 2500);
+            } catch (err) {}
+            document.body.removeChild(ta);
+          }
         });
       }
     })();
