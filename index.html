@@ -38,24 +38,67 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Grid + particles background */
+    /* Grid + gradient background (hero-style mask) */
     .bg-pattern {
       position: fixed;
       inset: 0;
-      z-index: -1;
+      z-index: -2;
+      background-color: var(--bg);
       background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 60px 60px;
+        linear-gradient(to right, rgba(10,10,10,0.95) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(10,10,10,0.95) 1px, transparent 1px);
+      background-size: 4rem 4rem;
+      -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 110%);
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 110%);
     }
+    .bg-pattern-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: linear-gradient(to bottom, rgba(30, 41, 59, 0.08) 0%, transparent 40%, transparent 60%, rgba(180, 83, 9, 0.06) 100%);
+      pointer-events: none;
+    }
+    /* Floating particles */
     .bg-particles {
       position: fixed;
       inset: 0;
       z-index: -1;
-      background-image: radial-gradient(2px 2px at 20% 30%, rgba(232,165,75,0.4), transparent),
-        radial-gradient(2px 2px at 70% 60%, rgba(232,165,75,0.25), transparent),
-        radial-gradient(2px 2px at 40% 80%, rgba(232,165,75,0.2), transparent);
-      background-size: 100% 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(232, 165, 75, 0.3);
+      border-radius: 50%;
+      animation: particleFloat 15s linear infinite;
+    }
+    .particle:nth-child(1) { left: 10%; top: 20%; animation-duration: 18s; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 85%; top: 15%; animation-duration: 14s; animation-delay: 1s; }
+    .particle:nth-child(3) { left: 25%; top: 60%; animation-duration: 20s; animation-delay: 2s; }
+    .particle:nth-child(4) { left: 70%; top: 55%; animation-duration: 16s; animation-delay: 0.5s; }
+    .particle:nth-child(5) { left: 50%; top: 35%; animation-duration: 22s; animation-delay: 3s; }
+    .particle:nth-child(6) { left: 15%; top: 75%; animation-duration: 12s; animation-delay: 1.5s; }
+    .particle:nth-child(7) { left: 90%; top: 40%; animation-duration: 19s; animation-delay: 2.5s; }
+    .particle:nth-child(8) { left: 40%; top: 10%; animation-duration: 17s; animation-delay: 0.8s; }
+    .particle:nth-child(9) { left: 60%; top: 80%; animation-duration: 13s; animation-delay: 1.2s; }
+    .particle:nth-child(10) { left: 5%; top: 45%; animation-duration: 21s; animation-delay: 2.2s; }
+    .particle:nth-child(11) { left: 75%; top: 25%; animation-duration: 15s; animation-delay: 0.3s; }
+    .particle:nth-child(12) { left: 35%; top: 70%; animation-duration: 18s; animation-delay: 1.8s; }
+    .particle:nth-child(13) { left: 95%; top: 65%; animation-duration: 14s; animation-delay: 2.8s; }
+    .particle:nth-child(14) { left: 20%; top: 40%; animation-duration: 20s; animation-delay: 0.6s; }
+    .particle:nth-child(15) { left: 55%; top: 5%; animation-duration: 16s; animation-delay: 1.4s; }
+    .particle:nth-child(16) { left: 80%; top: 85%; animation-duration: 12s; animation-delay: 2s; }
+    .particle:nth-child(17) { left: 30%; top: 50%; animation-duration: 19s; animation-delay: 0.9s; }
+    .particle:nth-child(18) { left: 65%; top: 30%; animation-duration: 17s; animation-delay: 2.3s; }
+    .particle:nth-child(19) { left: 45%; top: 90%; animation-duration: 13s; animation-delay: 1.6s; }
+    .particle:nth-child(20) { left: 8%; top: 65%; animation-duration: 21s; animation-delay: 0.4s; }
+    @keyframes particleFloat {
+      0%, 100% { transform: translate(0, 0); opacity: 0.6; }
+      25% { transform: translate(15px, -25px); opacity: 1; }
+      50% { transform: translate(-10px, 20px); opacity: 0.8; }
+      75% { transform: translate(20px, 10px); opacity: 0.9; }
     }
 
     /* Header */
@@ -343,6 +386,29 @@
     .metric-card .value svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--accent); }
     .metric-card .label { font-size: 0.9rem; color: var(--text-muted); }
 
+    /* Hero entrance animation */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content .hero-label { opacity: 0; animation: heroFadeUp 0.8s ease 0s forwards; }
+    .hero-content .hero-title { opacity: 0; animation: heroFadeUp 0.8s ease 0.1s forwards; }
+    .hero-content .hero-desc { opacity: 0; animation: heroFadeUp 0.8s ease 0.2s forwards; }
+    .hero-content .hero-cta { opacity: 0; animation: heroFadeUp 0.8s ease 0.25s forwards; }
+    .hero-content .metrics { opacity: 0; animation: heroFadeUp 0.8s ease 0.35s forwards; }
+
+    /* Hero bottom gradient */
+    #hero { position: relative; }
+    .hero-bottom-gradient {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 8rem;
+      background: linear-gradient(to top, var(--bg), transparent);
+      pointer-events: none;
+    }
+
     /* About */
     #about { padding-top: 6rem; }
     #about .content { max-width: 720px; margin: 0 auto 3rem; }
@@ -519,6 +585,64 @@
     }
     .contact-links a:hover { background: rgba(232,165,75,0.08); border-color: var(--accent); }
 
+    /* Section scroll-in animations (viewport-triggered, once) */
+    .section-animate .section-head {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .section-animate.in-view .section-head {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section-animate .animate-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .section-animate.in-view .animate-up {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section-animate .animate-up.animate-delay-1 { transition-delay: 0.1s; }
+    .section-animate .animate-up.animate-delay-2 { transition-delay: 0.2s; }
+    .section-animate .animate-up.animate-delay-3 { transition-delay: 0.15s; }
+    /* Stagger: children slide in from left */
+    .section-animate .value-cards.animate-stagger .value-card,
+    .section-animate .exp-timeline.animate-stagger .exp-row,
+    .section-animate .focus-grid.animate-stagger .focus-card,
+    .section-animate .insights-list.animate-stagger .insight-item {
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .section-animate.in-view .value-cards.animate-stagger .value-card:nth-child(1),
+    .section-animate.in-view .exp-timeline.animate-stagger .exp-row:nth-child(1) { opacity: 1; transform: translateX(0); transition-delay: 0s; }
+    .section-animate.in-view .value-cards.animate-stagger .value-card:nth-child(2),
+    .section-animate.in-view .exp-timeline.animate-stagger .exp-row:nth-child(2) { opacity: 1; transform: translateX(0); transition-delay: 0.1s; }
+    .section-animate.in-view .value-cards.animate-stagger .value-card:nth-child(3),
+    .section-animate.in-view .exp-timeline.animate-stagger .exp-row:nth-child(3) { opacity: 1; transform: translateX(0); transition-delay: 0.2s; }
+    .section-animate.in-view .exp-timeline.animate-stagger .exp-row:nth-child(4) { opacity: 1; transform: translateX(0); transition-delay: 0.3s; }
+    .section-animate.in-view .exp-timeline.animate-stagger .exp-row:nth-child(5) { opacity: 1; transform: translateX(0); transition-delay: 0.4s; }
+    .section-animate.in-view .focus-grid.animate-stagger .focus-card:nth-child(1) { opacity: 1; transform: translateX(0); transition-delay: 0s; }
+    .section-animate.in-view .focus-grid.animate-stagger .focus-card:nth-child(2) { opacity: 1; transform: translateX(0); transition-delay: 0.1s; }
+    .section-animate.in-view .focus-grid.animate-stagger .focus-card:nth-child(3) { opacity: 1; transform: translateX(0); transition-delay: 0.2s; }
+    .section-animate.in-view .focus-grid.animate-stagger .focus-card:nth-child(4) { opacity: 1; transform: translateX(0); transition-delay: 0.3s; }
+    .section-animate.in-view .insights-list.animate-stagger .insight-item:nth-child(1) { opacity: 1; transform: translateX(0); transition-delay: 0s; }
+    .section-animate.in-view .insights-list.animate-stagger .insight-item:nth-child(2) { opacity: 1; transform: translateX(0); transition-delay: 0.1s; }
+    .section-animate.in-view .insights-list.animate-stagger .insight-item:nth-child(3) { opacity: 1; transform: translateX(0); transition-delay: 0.2s; }
+    /* Experience stats block */
+    .section-animate .exp-stats.animate-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      transition-delay: 0.5s;
+    }
+    .section-animate.in-view .exp-stats.animate-up {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 900px) {
       .header { padding: 1rem 1.5rem; }
       .nav { gap: 1.25rem; }
@@ -531,7 +655,13 @@
 </head>
 <body>
   <div class="bg-pattern"></div>
-  <div class="bg-particles"></div>
+  <div class="bg-pattern-overlay"></div>
+  <div class="bg-particles" aria-hidden="true">
+    <span class="particle"></span><span class="particle"></span><span class="particle"></span><span class="particle"></span><span class="particle"></span>
+    <span class="particle"></span><span class="particle"></span><span class="particle"></span><span class="particle"></span><span class="particle"></span>
+    <span class="particle"></span><span class="particle"></span><span class="particle"></span><span class="particle"></span><span class="particle"></span>
+    <span class="particle"></span><span class="particle"></span><span class="particle"></span><span class="particle"></span><span class="particle"></span>
+  </div>
 
   <header class="header" id="header">
     <div class="header-inner">
@@ -564,49 +694,54 @@
 
   <main>
     <section id="hero">
-      <p class="hero-label"><span class="star">★</span> Venture Capital</p>
-      <h1 class="hero-title">
-        <span class="hero-line hero-white">Early-Stage</span>
-        <span class="hero-line hero-gradient">Investing</span>
-        <span class="hero-line hero-white">Enthusiast</span>
-      </h1>
-      <p class="hero-desc">
-        Identifying and nurturing the next generation of transformative startups. Focused on AI infrastructure, hard tech, and human-centered health—with a foundation in finance and data-driven due diligence.
-      </p>
-      <div class="hero-cta">
-        <a href="#investing" class="btn btn-primary">View Investing Focus →</a>
-        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      <div class="hero-content">
+        <p class="hero-label"><span class="star">★</span> Venture Capital</p>
+        <h1 class="hero-title">
+          <span class="hero-line hero-white">Early-Stage</span>
+          <span class="hero-line hero-gradient">Investing</span>
+          <span class="hero-line hero-white">Enthusiast</span>
+        </h1>
+        <p class="hero-desc">
+          Identifying and nurturing the next generation of transformative startups. Focused on AI infrastructure, hard tech, and human-centered health—with a foundation in finance and data-driven due diligence.
+        </p>
+        <div class="hero-cta">
+          <a href="#investing" class="btn btn-primary">View Investing Focus →</a>
+          <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+        </div>
+        <div class="metrics">
+          <div class="metric-card">
+            <div class="value"><span class="value-num">100+</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
+            <div class="label">Startups Screened</div>
+          </div>
+          <div class="metric-card">
+            <div class="value"><span class="value-num">10+</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
+            <div class="label">Investment Theses</div>
+          </div>
+          <div class="metric-card">
+            <div class="value"><span class="value-num">125+</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
+            <div class="label">Countries (Ecosystem Reach)</div>
+          </div>
+        </div>
       </div>
-      <div class="metrics">
-        <div class="metric-card">
-          <div class="value"><span class="value-num">100+</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
-          <div class="label">Startups Screened</div>
-        </div>
-        <div class="metric-card">
-          <div class="value"><span class="value-num">10+</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
-          <div class="label">Investment Theses</div>
-        </div>
-        <div class="metric-card">
-          <div class="value"><span class="value-num">125+</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
-          <div class="label">Countries (Ecosystem Reach)</div>
-        </div>
-      </div>
+      <div class="hero-bottom-gradient" aria-hidden="true"></div>
     </section>
 
-    <section id="about">
-      <div class="section-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
-        About Me
+    <section id="about" class="section-animate">
+      <div class="section-head">
+        <div class="section-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          About Me
+        </div>
+        <h2 class="section-title">Passionate About <span class="accent">Innovation</span></h2>
       </div>
-      <h2 class="section-title">Passionate About <span class="accent">Innovation</span></h2>
       <div class="content">
-        <p class="section-desc">
+        <p class="section-desc animate-up animate-delay-1">
           I'm Alien Feng—a venture scout and VC associate focused on early-stage startups across AI infrastructure, hard tech, and human-centered health. I'm currently at Carnegie Mellon (Tepper), pursuing a B.S. in Business Administration with an AI in Business concentration and an additional major in Statistics and Data Science (Expected May 2028). I bring data-driven due diligence, financial modeling, and a global ecosystem lens from roles at MiraclePlus (YC China), LvlUp Ventures, Seamless Venture, and Startup Grind, plus structured finance experience from HSBC. At CMU I serve as Vice-President of External for Eta Omega Chi, where I've secured $20K+ in corporate sponsorships and built an alumni and career platform connecting 100+ professionals with 50+ active members.
         </p>
-        <p class="section-desc" style="margin-top: -1rem;">
+        <p class="section-desc animate-up animate-delay-2" style="margin-top: -1rem;">
           <strong>Skills:</strong> Python, R, Bloomberg, Financial Modeling, DCF, Early-Stage Due Diligence · <strong>Languages:</strong> English, Chinese, French
         </p>
-        <div class="value-cards">
+        <div class="value-cards animate-stagger">
           <div class="value-card">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
             <h3>Strategic Vision</h3>
@@ -626,14 +761,16 @@
       </div>
     </section>
 
-    <section id="experience">
-      <div class="section-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        Experience
+    <section id="experience" class="section-animate">
+      <div class="section-head">
+        <div class="section-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Experience
+        </div>
+        <h2 class="section-title">Professional <span class="accent">Journey</span></h2>
       </div>
-      <h2 class="section-title">Professional <span class="accent">Journey</span></h2>
       <div class="experience-wrap">
-        <div class="exp-timeline">
+        <div class="exp-timeline animate-stagger">
           <div class="exp-row">
             <span class="exp-year-badge">Dec 2025 – Present</span>
             <div class="exp-card">
@@ -731,7 +868,7 @@
             </div>
           </div>
         </div>
-        <div class="exp-stats">
+        <div class="exp-stats animate-up">
           <div class="exp-stat">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
             <div class="value">125+</div>
@@ -756,11 +893,13 @@
       </div>
     </section>
 
-    <section id="investing">
-      <div class="section-label">Investing Focus</div>
-      <h2 class="section-title">Where I <span class="accent">Invest</span></h2>
-      <p class="section-desc" style="color: var(--text-muted); margin-bottom: 2rem;">Sectors and themes I am actively evaluating and supporting.</p>
-      <div class="focus-grid">
+    <section id="investing" class="section-animate">
+      <div class="section-head">
+        <div class="section-label">Investing Focus</div>
+        <h2 class="section-title">Where I <span class="accent">Invest</span></h2>
+      </div>
+      <p class="section-desc animate-up animate-delay-1" style="color: var(--text-muted); margin-bottom: 2rem;">Sectors and themes I am actively evaluating and supporting.</p>
+      <div class="focus-grid animate-stagger">
         <div class="focus-card"><h4>AI Infrastructure & Applied AI</h4><p>AI infrastructure, embodied intelligence, vertical AI, and fintech applications.</p></div>
         <div class="focus-card"><h4>Hard Tech</h4><p>Optical interconnects, frontier technologies, and enterprise-ready hardware and software.</p></div>
         <div class="focus-card"><h4>Human-Centered & Frontier Health</h4><p>Human-centered health, digital health, and commercialization pathways in life sciences.</p></div>
@@ -768,11 +907,13 @@
       </div>
     </section>
 
-    <section id="insights">
-      <div class="section-label">Industry Insights</div>
-      <h2 class="section-title">Writing & <span class="accent">Thinking</span></h2>
-      <p class="insights-intro">Selected perspectives on markets, startups, and venture. Add links to your essays, notes, or talks here when you have content.</p>
-      <div class="insights-list">
+    <section id="insights" class="section-animate">
+      <div class="section-head">
+        <div class="section-label">Industry Insights</div>
+        <h2 class="section-title">Writing & <span class="accent">Thinking</span></h2>
+      </div>
+      <p class="insights-intro animate-up animate-delay-1">Selected perspectives on markets, startups, and venture. Add links to your essays, notes, or talks here when you have content.</p>
+      <div class="insights-list animate-stagger">
         <div class="insight-item">
           <span class="date">—</span>
           <div>
@@ -783,11 +924,13 @@
       </div>
     </section>
 
-    <section id="contact">
-      <div class="section-label">Contact</div>
-      <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
-      <p class="section-desc">Open to connecting with founders, co-investors, and talent in the early-stage ecosystem.</p>
-      <div class="contact-links">
+    <section id="contact" class="section-animate">
+      <div class="section-head">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
+      </div>
+      <p class="section-desc animate-up animate-delay-1">Open to connecting with founders, co-investors, and talent in the early-stage ecosystem.</p>
+      <div class="contact-links animate-up animate-delay-2">
         
         <a href="https://www.linkedin.com/in/alien-feng/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="mailto:xiyaf@andrew.cmu.edu" target="_blank" rel="noopener noreferrer">xiyaf@andrew.cmu.edu</a>
@@ -859,6 +1002,28 @@
       }
       window.addEventListener('scroll', setActive);
       setActive();
+
+      /* Section scroll-in animations (viewport-triggered, once) */
+      var animateSections = document.querySelectorAll('.section-animate');
+      if (typeof IntersectionObserver !== 'undefined') {
+        var sectionObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+              }
+            });
+          },
+          { rootMargin: '0px 0px -80px 0px', threshold: 0.1 }
+        );
+        animateSections.forEach(function (el) {
+          sectionObserver.observe(el);
+        });
+      } else {
+        animateSections.forEach(function (el) {
+          el.classList.add('in-view');
+        });
+      }
     })();
   </script>
 </body>
