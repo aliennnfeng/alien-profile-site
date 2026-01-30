@@ -1,4 +1,717 @@
-<h1>Hello world</h1>
-<p>I'm Alien</p>
-<h2>About Me</h2>
-<p>I'm in Tepper.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xiya Feng | Venture Capital</title>
+  <meta name="description" content="Xiya Feng — Early-stage investing enthusiast. VC portfolio and professional profile." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0b;
+      --bg-card: #141416;
+      --surface: #1a1a1d;
+      --text: #f5f5f5;
+      --text-muted: #a0a0a5;
+      --accent: #e8a54b;
+      --accent-dim: #c4893a;
+      --border: rgba(232, 165, 75, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Grid + particles background */
+    .bg-pattern {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .bg-particles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: radial-gradient(2px 2px at 20% 30%, rgba(232,165,75,0.4), transparent),
+        radial-gradient(2px 2px at 70% 60%, rgba(232,165,75,0.25), transparent),
+        radial-gradient(2px 2px at 40% 80%, rgba(232,165,75,0.2), transparent);
+      background-size: 100% 100%;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+    }
+    .header.scrolled {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+    @media (min-width: 1024px) {
+      .header { padding: 1.25rem 2.5rem; }
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo-btn {
+      flex-shrink: 0;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: 0.05em;
+      background: linear-gradient(90deg, #cbd5e1, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: opacity 0.2s;
+    }
+    .logo-btn:hover { opacity: 0.9; }
+
+    .nav-desktop {
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .nav-desktop {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+    }
+    .nav-desktop .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .nav-desktop .nav-link:hover,
+    .nav-desktop .nav-link.active { color: var(--accent); }
+    .nav-desktop .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #94a3b8, var(--accent));
+      transition: width 0.3s;
+    }
+    .nav-desktop .nav-link:hover::after,
+    .nav-desktop .nav-link.active::after { width: 100%; }
+
+    .mobile-menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .mobile-menu-btn:hover { color: var(--accent); }
+    @media (min-width: 768px) {
+      .mobile-menu-btn { display: none; }
+    }
+
+    .nav-mobile {
+      display: none;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+    .nav-mobile.open {
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+    }
+    .nav-mobile .nav-mobile-inner {
+      padding: 0.5rem 0 1rem;
+    }
+    .nav-mobile .nav-link {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: color 0.2s, background 0.2s;
+      border-radius: 0.375rem;
+    }
+    .nav-mobile .nav-link:hover {
+      color: var(--accent);
+      background: rgba(51, 65, 85, 0.3);
+    }
+
+    /* Sections common */
+    section {
+      padding: 5rem 2.5rem 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-label svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin: 0 0 1.5rem;
+      line-height: 1.15;
+    }
+    .section-title .accent { color: var(--accent); }
+
+    /* Hero */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 5rem;
+    }
+
+    .hero-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .hero-label .star { color: var(--accent); }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0 0 1rem;
+    }
+    .hero-title .line2 { display: block; }
+    .hero-title .accent { color: var(--accent); }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 0 2.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.75rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--surface) 0%, var(--accent) 100%);
+      color: var(--bg);
+      border: none;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--accent);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 800px;
+    }
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: left;
+    }
+    .metric-card .value {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+    .metric-card .value svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .metric-card .label { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* About */
+    #about { padding-top: 6rem; }
+    #about .content { max-width: 720px; margin: 0 auto 3rem; }
+    #about .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin: 0 0 2.5rem;
+    }
+
+    .value-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+    }
+    .value-card .icon { color: var(--accent); margin-bottom: 1rem; }
+    .value-card .icon svg { width: 28px; height: 28px; }
+    .value-card h3 { font-size: 1.1rem; margin: 0 0 0.5rem; font-weight: 600; }
+    .value-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    /* Experience */
+    #experience { padding-top: 6rem; }
+
+    .experience-layout {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .timeline-dot {
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      width: fit-content;
+    }
+    .exp-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .exp-card h3 { font-size: 1.25rem; margin: 0 0 0.35rem; font-weight: 700; }
+    .exp-card .company { color: var(--accent); font-size: 1rem; font-weight: 500; margin-bottom: 1rem; }
+    .exp-card .desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.55; }
+    .exp-card .achievements { margin-top: 1rem; }
+    .exp-card .achievements-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .exp-card .achievements-title svg { width: 14px; height: 14px; color: var(--accent); }
+    .exp-card ul { margin: 0; padding-left: 1.25rem; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .exp-card li { margin-bottom: 0.35rem; }
+    .exp-card li::marker { color: var(--accent); }
+
+    /* Investing Focus */
+    #investing { padding-top: 6rem; }
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .focus-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .focus-card h4 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--accent); }
+    .focus-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+    /* Industry Insights */
+    #insights { padding-top: 6rem; }
+    .insights-intro { color: var(--text-muted); max-width: 600px; margin-bottom: 2rem; }
+    .insights-list { display: flex; flex-direction: column; gap: 1rem; }
+    .insight-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .insight-item .date { font-size: 0.8rem; color: var(--accent); font-weight: 600; flex-shrink: 0; }
+    .insight-item .title { font-weight: 600; margin-bottom: 0.25rem; }
+    .insight-item .meta { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+
+    /* Contact */
+    #contact {
+      padding-top: 6rem;
+      padding-bottom: 5rem;
+      text-align: center;
+    }
+    #contact .section-desc { color: var(--text-muted); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .contact-links a:hover { background: rgba(232,165,75,0.08); border-color: var(--accent); }
+
+    @media (max-width: 900px) {
+      .header { padding: 1rem 1.5rem; }
+      .nav { gap: 1.25rem; }
+      .nav a { font-size: 0.85rem; }
+      section { padding: 4rem 1.5rem 5rem; }
+      .metrics { grid-template-columns: 1fr; }
+      .value-cards { grid-template-columns: 1fr; }
+      .experience-layout { grid-template-columns: 1fr; }
+      .timeline { flex-direction: row; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-pattern"></div>
+  <div class="bg-particles"></div>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <button type="button" class="logo-btn" id="logo-btn" aria-label="Scroll to top">VC PORTFOLIO</button>
+
+      <div class="nav-desktop">
+        <a href="#about" class="nav-link" data-section="about">About Me</a>
+        <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+        <a href="#investing" class="nav-link" data-section="investing">Investing Focus</a>
+        <a href="#insights" class="nav-link" data-section="insights">Industry Insights</a>
+        <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+      </div>
+
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+        <span class="icon-menu" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></span>
+        <span class="icon-close" aria-hidden="true" style="display:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+      </button>
+    </div>
+
+    <div class="nav-mobile" id="nav-mobile">
+      <div class="nav-mobile-inner">
+        <a href="#about" class="nav-link" data-section="about">About Me</a>
+        <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+        <a href="#investing" class="nav-link" data-section="investing">Investing Focus</a>
+        <a href="#insights" class="nav-link" data-section="insights">Industry Insights</a>
+        <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero">
+      <p class="hero-label"><span class="star">★</span> Venture Capital</p>
+      <h1 class="hero-title">
+        Early-Stage <span class="line2"><span class="accent">Investing</span> Enthusiast</span>
+      </h1>
+      <p class="hero-desc">
+        Identifying and nurturing the next generation of transformative startups. Focused on technology-driven innovation and sustainable growth.
+      </p>
+      <div class="hero-cta">
+        <a href="#investing" class="btn btn-primary">View Investing Focus →</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+      <div class="metrics">
+        <div class="metric-card">
+          <div class="value">25+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
+          <div class="label">Portfolio Companies</div>
+        </div>
+        <div class="metric-card">
+          <div class="value">8 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
+          <div class="label">Investment Sectors</div>
+        </div>
+        <div class="metric-card">
+          <div class="value">10+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l5-5 5 5M7 12l5-5 5 5"/></svg></div>
+          <div class="label">Years Experience</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        About Me
+      </div>
+      <h2 class="section-title">Passionate About <span class="accent">Innovation</span></h2>
+      <div class="content">
+        <p class="section-desc">
+          As a venture capital and early-stage investing enthusiast, I specialize in identifying and supporting groundbreaking startups that are reshaping industries. With a focus on technology-driven solutions, I bring strategic insights and a network of resources to help founders succeed.
+        </p>
+        <div class="value-cards">
+          <div class="value-card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+            <h3>Strategic Vision</h3>
+            <p>Identifying transformative opportunities in emerging markets and disruptive technologies.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/><path d="M20 12a8 8 0 1 0-16 0 8 8 0 0 0 16 0z"/></svg></div>
+            <h3>Deep Analysis</h3>
+            <p>Data-driven approach to evaluating startups and market trends with rigorous due diligence.</p>
+          </div>
+          <div class="value-card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <h3>Founder-First</h3>
+            <p>Building lasting relationships with visionary founders and supporting their journey.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        Experience
+      </div>
+      <h2 class="section-title">Professional <span class="accent">Journey</span></h2>
+      <div class="experience-layout">
+        <div class="timeline">
+          <span class="timeline-dot">2020 – Present</span>
+          <span class="timeline-dot">2017 – 2020</span>
+        </div>
+        <div class="exp-cards">
+          <div class="exp-card">
+            <h3>Senior Investment Analyst</h3>
+            <p class="company">Innovative Ventures</p>
+            <p class="desc">Led due diligence and investment decisions for early-stage tech startups. Successfully identified and invested in 15+ companies across AI, fintech, and sustainable tech sectors.</p>
+            <div class="achievements">
+              <div class="achievements-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg> Key Achievements</div>
+              <ul>
+                <li>Portfolio companies raised $200M+ in follow-on funding</li>
+                <li>Average portfolio company valuation growth of 300%</li>
+                <li>Mentored 50+ founders through strategic growth phases</li>
+              </ul>
+            </div>
+          </div>
+          <div class="exp-card">
+            <h3>Investment Associate</h3>
+            <p class="company">Tech Growth Partners</p>
+            <p class="desc">Evaluated investment opportunities in Series A and B stage companies. Developed comprehensive market analysis and financial models.</p>
+            <div class="achievements">
+              <div class="achievements-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg> Key Achievements</div>
+              <ul>
+                <li>Analyzed 200+ investment opportunities annually</li>
+                <li>Participated in 10 successful exits</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="investing">
+      <div class="section-label">Investing Focus</div>
+      <h2 class="section-title">Where I <span class="accent">Invest</span></h2>
+      <p class="section-desc" style="color: var(--text-muted); margin-bottom: 2rem;">Sectors and themes I am actively evaluating and supporting.</p>
+      <div class="focus-grid">
+        <div class="focus-card"><h4>AI & Machine Learning</h4><p>Applied AI, infrastructure, and vertical AI solutions.</p></div>
+        <div class="focus-card"><h4>Fintech & Insurtech</h4><p>Payments, embedded finance, and next-gen insurance.</p></div>
+        <div class="focus-card"><h4>Sustainable Tech</h4><p>Climate, energy transition, and circular economy.</p></div>
+        <div class="focus-card"><h4>Healthcare & Bio</h4><p>Digital health, biotech, and diagnostics.</p></div>
+      </div>
+    </section>
+
+    <section id="insights">
+      <div class="section-label">Industry Insights</div>
+      <h2 class="section-title">Writing & <span class="accent">Thinking</span></h2>
+      <p class="insights-intro">Selected notes and perspectives on markets, startups, and venture. Placeholder—replace with real links when you have content.</p>
+      <div class="insights-list">
+        <div class="insight-item">
+          <span class="date">2024</span>
+          <div>
+            <div class="title">Example: The case for vertical AI in 2025</div>
+            <p class="meta">Short essay or blog — update with your piece</p>
+          </div>
+        </div>
+        <div class="insight-item">
+          <span class="date">2024</span>
+          <div>
+            <div class="title">Example: Founder-market fit in early-stage</div>
+            <p class="meta">Perspective — update with your piece</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Get in <span class="accent">Touch</span></h2>
+      <p class="section-desc">Open to connecting with founders, co-investors, and talent in the early-stage ecosystem.</p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/xiyafeng" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:hello@xiyafeng.com">hello@xiyafeng.com</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var header = document.getElementById('header');
+      var logoBtn = document.getElementById('logo-btn');
+      var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      var navMobile = document.getElementById('nav-mobile');
+      var navLinks = document.querySelectorAll('.nav-link');
+      var sections = document.querySelectorAll('section[id]');
+
+      function setScrolled() {
+        header.classList.toggle('scrolled', window.scrollY > 20);
+      }
+      window.addEventListener('scroll', setScrolled);
+      setScrolled();
+
+      logoBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      function openMobileMenu() {
+        navMobile.classList.add('open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        mobileMenuBtn.querySelector('.icon-menu').style.display = 'none';
+        mobileMenuBtn.querySelector('.icon-close').style.display = '';
+      }
+      function closeMobileMenu() {
+        navMobile.classList.remove('open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.querySelector('.icon-menu').style.display = '';
+        mobileMenuBtn.querySelector('.icon-close').style.display = 'none';
+      }
+      mobileMenuBtn.addEventListener('click', function () {
+        if (navMobile.classList.contains('open')) closeMobileMenu();
+        else openMobileMenu();
+      });
+
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var href = link.getAttribute('href');
+          if (href && href.startsWith('#') && document.querySelector(href)) {
+            e.preventDefault();
+            document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+            closeMobileMenu();
+          }
+        });
+      });
+
+      function setActive() {
+        var scrollY = window.scrollY;
+        var headerH = header.offsetHeight;
+        var current = '';
+        sections.forEach(function (section) {
+          var top = section.offsetTop - headerH;
+          var height = section.offsetHeight;
+          if (scrollY >= top - 80 && scrollY < top + height - 80) current = section.id;
+        });
+        navLinks.forEach(function (a) {
+          var section = a.getAttribute('data-section');
+          a.classList.toggle('active', section === current);
+        });
+      }
+      window.addEventListener('scroll', setActive);
+      setActive();
+    })();
+  </script>
+</body>
+</html>
